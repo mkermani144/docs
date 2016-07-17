@@ -62,7 +62,51 @@
 <li>OS: Centos 7</li>
 <li>Samba version: 4.4.5</li>
 <li>Samba installation type: building from source</li>
+<li>hostname: dept</li>
+<li>samba realm: department.net</li>
+<li>samba domain: department</li>
+<li>server IP address: 192.168.89.180, static</li>
 </ul>
+
+<h2>
+<a id="user-content-provisioning-samba" class="anchor" href="#provisioning-samba" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Provisioning samba</h2>
+
+<div class="highlight highlight-source-shell"><pre>samba-tool domain provision --use-rfc2307 --interactive</pre></div>
+
+<p>You will see the program asks you for realm, domain, etc.</p>
+
+<pre><code>Realm: department.net
+Domain [department]: # Enter
+Server Role (dc, member, standalone) [dc]: # Enter
+DNS backend (SAMBA_INTERNAL, BIND9_FLATFILE, BIND9_DLZ, NONE) [SAMBA_INTERNAL]: [SAMBA_INTERNAL]: # Enter
+DNS forwarder IP address (write 'none' to disable forwarding) [*.*.*.*]: # Enter
+Administrator password: # Type in your password
+Retype password: # Retype password
+...
+...
+</code></pre>
+
+<p>At the end, you should see something like this:</p>
+
+<pre><code>Server Role:           active directory domain controller
+Hostname:              dept
+NetBIOS Domain:        DEPARTMENT
+DNS Domain:            department.net
+DOMAIN SID:            S-1-5-*-*-*-*
+</code></pre>
+
+<p>Ensure that provisioning has been done successfully via the following command:</p>
+
+<div class="highlight highlight-source-shell"><pre>smbclient //localhost/netlogon -UAdministrator -c <span class="pl-s"><span class="pl-pds">'</span>ls<span class="pl-pds">'</span></span></pre></div>
+
+<p>The command should return something like this:</p>
+
+<pre><code>Domain=[DEPARTMENT] OS=[Unix] Server=[Samba 4.4.5]
+ .                                   D        0  Sat Jul  5 08:40:00 2016
+ ..                                  D        0  Sat Jul  5 08:40:00 2016
+
+               49386 blocks of size 524288. 42093 blocks available
+</code></pre>
 
               </article>
             </div>
