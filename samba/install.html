@@ -74,14 +74,14 @@
 
 <p>Install all of the dependencies via the following command:</p>
 
-<pre><code># yum install perl gcc attr libacl-devel libblkid-devel \
-  gnutls-devel readline-devel python-devel gdb pkgconfig \
-  krb5-workstation zlib-devel setroubleshoot-server libaio-devel \
-  setroubleshoot-plugins policycoreutils-python \
-  libsemanage-python perl-ExtUtils-MakeMaker perl-Parse-Yapp \
-  perl-Test-Base popt-devel libxml2-devel libattr-devel \
-  keyutils-libs-devel cups-devel bind-utils libxslt \
-  docbook-style-xsl openldap-devel autoconf python-crypto pam-devel
+<pre><code>yum install perl gcc attr libacl-devel libblkid-devel \
+gnutls-devel readline-devel python-devel gdb pkgconfig \
+krb5-workstation zlib-devel setroubleshoot-server libaio-devel \
+setroubleshoot-plugins policycoreutils-python \
+libsemanage-python perl-ExtUtils-MakeMaker perl-Parse-Yapp \
+perl-Test-Base popt-devel libxml2-devel libattr-devel \
+keyutils-libs-devel cups-devel bind-utils libxslt \
+docbook-style-xsl openldap-devel autoconf python-crypto pam-devel
 </code></pre>
 
 <h2>
@@ -96,6 +96,92 @@ make install
 </code></pre>
 
 <p>Samba is located under <code>/usr/local/samba</code>.</p>
+
+<h2>
+<a id="user-content-additional-jobs" class="anchor" href="#additional-jobs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Additional jobs</h2>
+
+<h4>
+<a id="user-content-updating-path" class="anchor" href="#updating-path" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Updating <code>PATH</code>
+</h4>
+
+<pre><code>echo 'export PATH=$PATH:/usr/local/samba/bin:/usr/local/samba/sbin' &gt;&gt; /etc/profile
+</code></pre>
+
+<h4>
+<a id="user-content-making-init-script-for-samba" class="anchor" href="#making-init-script-for-samba" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Making init script for samba</h4>
+
+<p>Put the following lines into <code>/etc/rc.d/init.d/samba4</code>. You can choose a name other than <code>samba4</code>.</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c">#! /bin/bash</span>
+<span class="pl-c">#</span>
+<span class="pl-c"># samba4 Bring up/down samba4 service</span>
+<span class="pl-c">#</span>
+<span class="pl-c"># chkconfig: - 90 10</span>
+<span class="pl-c"># description: Activates/Deactivates all samba4 interfaces configured to \</span>
+<span class="pl-c"># start at boot time.</span>
+<span class="pl-c">#</span>
+<span class="pl-c">### BEGIN INIT INFO</span>
+<span class="pl-c"># Provides:</span>
+<span class="pl-c"># Should-Start:</span>
+<span class="pl-c"># Short-Description: Bring up/down samba4</span>
+<span class="pl-c"># Description: Bring up/down samba4</span>
+<span class="pl-c">### END INIT INFO</span>
+<span class="pl-c"># Source function library.</span>
+<span class="pl-c1">.</span> /etc/init.d/functions
+
+<span class="pl-k">if</span> [ <span class="pl-k">-f</span> /etc/sysconfig/samba4 ]<span class="pl-k">;</span> <span class="pl-k">then</span>
+<span class="pl-c1">.</span> /etc/sysconfig/samba4
+<span class="pl-k">fi</span>
+
+CWD=<span class="pl-s"><span class="pl-pds">$(</span><span class="pl-c1">pwd</span><span class="pl-pds">)</span></span>
+prog=<span class="pl-s"><span class="pl-pds">"</span>samba4<span class="pl-pds">"</span></span>
+
+<span class="pl-en">start</span>() {
+<span class="pl-c1">echo</span> -n <span class="pl-s"><span class="pl-pds">$"</span>Starting <span class="pl-smi">$prog</span>: <span class="pl-pds">"</span></span>
+/usr/local/samba/sbin/samba
+sleep 2
+<span class="pl-k">if</span> ps ax <span class="pl-k">|</span> grep -v <span class="pl-s"><span class="pl-pds">"</span>grep<span class="pl-pds">"</span></span> <span class="pl-k">|</span> grep -q /samba/sbin/samba <span class="pl-k">;</span> <span class="pl-k">then</span> success <span class="pl-s"><span class="pl-pds">$"</span>samba4 startup<span class="pl-pds">"</span></span><span class="pl-k">;</span> <span class="pl-k">else</span> failure <span class="pl-s"><span class="pl-pds">$"</span>samba4 startup<span class="pl-pds">"</span></span><span class="pl-k">;</span> <span class="pl-k">fi</span>
+<span class="pl-c1">echo</span>
+}
+<span class="pl-en">stop</span>() {
+<span class="pl-c1">echo</span> -n <span class="pl-s"><span class="pl-pds">$"</span>Shutting down <span class="pl-smi">$prog</span>: <span class="pl-pds">"</span></span>
+killall samba
+sleep 2
+<span class="pl-k">if</span> ps ax <span class="pl-k">|</span> grep -v <span class="pl-s"><span class="pl-pds">"</span>grep<span class="pl-pds">"</span></span> <span class="pl-k">|</span> grep -q /samba/sbin/samba <span class="pl-k">;</span> <span class="pl-k">then</span> failure <span class="pl-s"><span class="pl-pds">$"</span>samba4 shutdown<span class="pl-pds">"</span></span><span class="pl-k">;</span> <span class="pl-k">else</span> success <span class="pl-s"><span class="pl-pds">$"</span>samba4 shutdown<span class="pl-pds">"</span></span><span class="pl-k">;</span> <span class="pl-k">fi</span>
+<span class="pl-c1">echo</span>
+}
+<span class="pl-en">status</span>() {
+/usr/local/samba/sbin/samba --show-build
+}
+
+<span class="pl-k">case</span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$1</span><span class="pl-pds">"</span></span> in
+start)
+start
+;;
+stop)
+stop
+;;
+status)
+status irattach
+;;
+restart|reload)
+stop
+start
+;;
+<span class="pl-k">*</span>)
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">$"</span>Usage: <span class="pl-smi">$0</span> {start|stop|restart|status}<span class="pl-pds">"</span></span>
+<span class="pl-c1">exit</span> 1
+<span class="pl-k">esac</span>
+
+<span class="pl-c1">exit</span> 0</pre></div>
+
+<p>Then run following commands:</p>
+
+<div class="highlight highlight-source-shell"><pre>chmod 755 /etc/rc.d/init.d/samba4
+ln -s /etc/rc.d/init.d/samba4 /etc/rc3.d/S80samba4
+chkconfig --add samba4
+chkconfig samba4 on
+service samba4 restart</pre></div>
 
               </article>
             </div>
