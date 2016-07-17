@@ -67,7 +67,7 @@
 <h2>
 <a id="user-content-downloading-samba" class="anchor" href="#downloading-samba" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Downloading samba</h2>
 
-<p>You can download latest stable release of samba from <a href="https://www.samba.org/">samba website</a>.</p>
+<p>You can download latest stable release of samba (currently 4.4.5) from <a href="https://www.samba.org/">samba website</a>.</p>
 
 <h2>
 <a id="user-content-installing-dependencies" class="anchor" href="#installing-dependencies" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing dependencies</h2>
@@ -83,6 +83,19 @@
   keyutils-libs-devel cups-devel bind-utils libxslt \
   docbook-style-xsl openldap-devel autoconf python-crypto pam-devel
 </code></pre>
+
+<h2>
+<a id="user-content-installing-samba" class="anchor" href="#installing-samba" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installing samba</h2>
+
+<pre><code>cd /root/samba
+tar -zxf samba-4.4.5.tar.gz
+cd samba-4.4.5
+./configure.developer
+make
+make install
+</code></pre>
+
+<p>Samba is located under <code>/usr/local/samba</code>.</p>
 
               </article>
             </div>
