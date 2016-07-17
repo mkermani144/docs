@@ -8,7 +8,7 @@ Installing samba 4
 
 Downloading samba
 ----
-You can download latest stable release of samba from [samba website](https://www.samba.org/).
+You can download latest stable release of samba (currently 4.4.5) from [samba website](https://www.samba.org/).
 
 Installing dependencies
 ----
@@ -24,3 +24,14 @@ Install all of the dependencies via the following command:
   docbook-style-xsl openldap-devel autoconf python-crypto pam-devel
 ```
 
+Installing samba
+----
+```
+cd /root/samba
+tar -zxf samba-4.4.5.tar.gz
+cd samba-4.4.5
+./configure.developer
+make
+make install
+```
+Samba is located under `/usr/local/samba`.
