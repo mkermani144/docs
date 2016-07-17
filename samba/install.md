@@ -124,3 +124,8 @@ chkconfig samba4 on
 service samba4 restart
 ```
 
+Resources
+----
+[samba website](http://www.samba.org)
+
+https://imanudin.net/2014/11/16/how-to-install-samba4-active-directory-on-centos-7-part-1/
