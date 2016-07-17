@@ -1,6 +1,11 @@
 Installing samba 4
 ====
 
+#### Preconditions
+* OS: Centos 7
+* Samba version: 4.4.5
+* Samba tarball path: /root/samba
+
 Downloading samba
 ----
 You can download latest stable release of samba from [samba website](https://www.samba.org/).
@@ -18,3 +23,4 @@ Install all of the dependencies via the following command:
   keyutils-libs-devel cups-devel bind-utils libxslt \
   docbook-style-xsl openldap-devel autoconf python-crypto pam-devel
 ```
+
