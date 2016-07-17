@@ -49,3 +49,10 @@ Domain=[DEPARTMENT] OS=[Unix] Server=[Samba 4.4.5]
 
                49386 blocks of size 524288. 42093 blocks available
 ```
+
+
+Resources
+----
+[samba website](http://www.samba.org)
+
+https://imanudin.net/2014/11/16/how-to-install-samba4-active-directory-on-centos-7-part-1/
