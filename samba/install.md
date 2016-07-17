@@ -47,6 +47,17 @@ Additional jobs
 #### Making IP address static
 It is necessary to make samba server IP address static, otherwise unexpected problems will happen. In order to make IP address static, you can use `nmtui` while `NetworkManager` service is started. Make sure the `ONBOOT` property in your interface `ifcfg` file under `/etc/sysconfig/network-scripts` has a value of `Yes`.
 
+#### Disabling firewall, iptables and selinux
+```bash
+setenforce 0
+service firewalld stop
+service iptables stop
+service ip6tables stop
+systemctl disable firewalld
+systemctl disable iptables
+systemctl disable ip6tables
+```
+
 #### Updating `PATH`
 ```bash
 echo 'export PATH=$PATH:/usr/local/samba/bin:/usr/local/samba/sbin' >> /etc/profile

@@ -106,6 +106,17 @@ make install
 <p>It is necessary to make samba server IP address static, otherwise unexpected problems will happen. In order to make IP address static, you can use <code>nmtui</code> while <code>NetworkManager</code> service is started. Make sure the <code>ONBOOT</code> property in your interface <code>ifcfg</code> file under <code>/etc/sysconfig/network-scripts</code> has a value of <code>Yes</code>.</p>
 
 <h4>
+<a id="user-content-disabling-firewall-iptables-and-selinux" class="anchor" href="#disabling-firewall-iptables-and-selinux" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Disabling firewall, iptables and selinux</h4>
+
+<div class="highlight highlight-source-shell"><pre>setenforce 0
+service firewalld stop
+service iptables stop
+service ip6tables stop
+systemctl disable firewalld
+systemctl disable iptables
+systemctl disable ip6tables</pre></div>
+
+<h4>
 <a id="user-content-updating-path" class="anchor" href="#updating-path" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Updating <code>PATH</code>
 </h4>
 
