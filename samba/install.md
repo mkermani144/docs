@@ -45,7 +45,7 @@ Additional jobs
 ----
 
 #### Updating `PATH`
-```
+```bash
 echo 'export PATH=$PATH:/usr/local/samba/bin:/usr/local/samba/sbin' >> /etc/profile
 ```
 
