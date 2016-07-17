@@ -101,6 +101,11 @@ make install
 <a id="user-content-additional-jobs" class="anchor" href="#additional-jobs" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Additional jobs</h2>
 
 <h4>
+<a id="user-content-making-ip-address-static" class="anchor" href="#making-ip-address-static" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Making IP address static</h4>
+
+<p>It is necessary to make samba server IP address static, otherwise unexpected problems will happen. In order to make IP address static, you can use <code>nmtui</code> while <code>NetworkManager</code> service is started. Make sure the <code>ONBOOT</code> property in your interface <code>ifcfg</code> file under <code>/etc/sysconfig/network-scripts</code> has a value of <code>Yes</code>.</p>
+
+<h4>
 <a id="user-content-updating-path" class="anchor" href="#updating-path" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Updating <code>PATH</code>
 </h4>
 
