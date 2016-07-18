@@ -30,3 +30,8 @@ Joining host to the domain
 5. Click __OK__.
 6. Unless something is wrong in your server, you should see a page asking for a name and password. Enter administrator as name and your admin password (the one you chose in provisioning samba) as the password and click OK.
 7. You should see welcome message. Click OK and __restart your system__. The host will be member of the domain afterwards.
+
+
+Resources
+----
+[samba website](http://www.sambe.org)
