@@ -91,6 +91,44 @@ samba-tool domain passwordsettings <span class="pl-c1">set</span> --min-pwd-age=
 samba-tool domain passwordsettings <span class="pl-c1">set</span> --max-pwd-age=0
 samba-tool domain passwordsettings <span class="pl-c1">set</span> --max-pwd-length=0</pre></div>
 
+<h2>
+<a id="user-content-adding-users" class="anchor" href="#adding-users" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding users</h2>
+
+<p>There are two methods of adding users in the directory: via <strong>Active Directory Users and Computers</strong> or via <strong>cli</strong>.</p>
+
+<h4>
+<a id="user-content-adding-users-via-active-directory-users-and-computers" class="anchor" href="#adding-users-via-active-directory-users-and-computers" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding users via Active Directory Users and Computers</h4>
+
+<ol>
+<li>Open Active Directory Users and Computers.</li>
+<li>Right click on the container you want to add users in (e.g. students) and under <strong>new</strong> click <strong>User</strong>.</li>
+<li>Fill in the input fields and click <strong>Next</strong>.</li>
+<li>Choose a password for user, check/uncheck the checkboxes if needed and click <strong>Next</strong>.</li>
+<li>Click <strong>Finish</strong>.
+You will see the user is added in specified container.</li>
+</ol>
+
+<p><strong>This method is useful if you want to create a small number of users.</strong></p>
+
+<h4>
+<a id="user-content-adding-users-via-cli" class="anchor" href="#adding-users-via-cli" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding users via cli</h4>
+
+<p>In this method, <code>samba-tool</code> is used to create users:</p>
+
+<div class="highlight highlight-source-shell"><pre>samba-tool user create <span class="pl-k">&lt;</span>username<span class="pl-k">&gt;</span> <span class="pl-k">&lt;</span>password<span class="pl-k">&gt;</span> --given-name=<span class="pl-k">&lt;</span>first-name<span class="pl-k">&gt;</span> \
+           --surname=<span class="pl-k">&lt;</span>last-name<span class="pl-k">&gt;</span> --userou=<span class="pl-k">&lt;</span>OU dn<span class="pl-k">&gt;</span> --use-username-as-cn</pre></div>
+
+<p>There are a lot of more options other than <code>given-name</code>, <code>surname</code>, <code>userou</code> and <code>use-username-as-cn</code>. For example, the <code>uid</code> option can be useful in assigning quotas to the users.</p>
+
+<p>An example of the command would be:</p>
+
+<div class="highlight highlight-source-shell"><pre>samba-tool user create FooBar123 <span class="pl-k">**</span>321raBooF --given-name=<span class="pl-s"><span class="pl-pds">"</span>Foo<span class="pl-pds">"</span></span> \
+           --surname=<span class="pl-s"><span class="pl-pds">"</span>Bar<span class="pl-pds">"</span></span> --userou=<span class="pl-s"><span class="pl-pds">"</span>ou=boys, ou=students<span class="pl-pds">"</span></span> --use-username-as-cn</pre></div>
+
+<p>Which creates a user in boys OU under students ou with FooBar123 as username and cn, Foo as firstname and Bar as lastname.</p>
+
+<p><strong>This method is useful if you want to create a bunch of thousands of users. For instanse, you can easily make a script that contains thousands of lines like above command and each line belongs to creating one user.</strong></p>
+
               </article>
             </div>
           </div>

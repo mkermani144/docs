@@ -32,3 +32,35 @@ samba-tool domain passwordsettings set --min-pwd-age=0
 samba-tool domain passwordsettings set --max-pwd-age=0
 samba-tool domain passwordsettings set --max-pwd-length=0
 ```
+
+
+Adding users
+----
+There are two methods of adding users in the directory: via __Active Directory Users and Computers__ or via __cli__.
+
+#### Adding users via Active Directory Users and Computers
+1. Open Active Directory Users and Computers.
+2. Right click on the container you want to add users in (e.g. students) and under __new__ click __User__.
+3. Fill in the input fields and click __Next__.
+4. Choose a password for user, check/uncheck the checkboxes if needed and click __Next__.
+5. Click __Finish__.
+You will see the user is added in specified container.
+
+__This method is useful if you want to create a small number of users.__
+
+#### Adding users via cli
+In this method, `samba-tool` is used to create users:
+```bash
+samba-tool user create <username> <password> --given-name=<first-name> \
+           --surname=<last-name> --userou=<OU dn> --use-username-as-cn
+```
+There are a lot of more options other than `given-name`, `surname`, `userou` and `use-username-as-cn`. For example, the `uid` option can be useful in assigning quotas to the users.
+
+An example of the command would be:
+```bash
+samba-tool user create FooBar123 **321raBooF --given-name="Foo" \
+           --surname="Bar" --userou="ou=boys, ou=students" --use-username-as-cn
+```
+Which creates a user in boys OU under students ou with FooBar123 as username and cn, Foo as firstname and Bar as lastname.
+
+__This method is useful if you want to create a bunch of thousands of users. For instanse, you can easily make a script that contains thousands of lines like above command and each line belongs to creating one user.__
