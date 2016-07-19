@@ -68,17 +68,28 @@
 <h2>
 <a id="user-content-adding-organizational-units" class="anchor" href="#adding-organizational-units" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding Organizational units</h2>
 
-<p>It is suggested that you create some organizational units(OUs) and add users in the OUs instead of adding users at the base of directory tree. OUs are made available to contain other type of resources, such as users, groups, printers, etc. In addition, OUs can be nested.</p>
+<p>It is suggested that you create some organizational units (OUs) and add users in the OUs instead of adding users at the base of directory tree. OUs are made available to contain other type of resources, such as users, groups, printers, etc. In addition, OUs can be nested.</p>
 
 <p>In order to add an OU:</p>
 
 <ol>
 <li>Search for <strong>Active directory Users and Computers</strong> in start menu and open it.</li>
-<li>Supposing you want to create an OU as a direct child of your domain in directory tree, rigth click on your domain in the directory tree you see(e.g. department.iut) and under <strong>new</strong> click <strong>Organizational Unit</strong>. </li>
+<li>Supposing you want to create an OU as a direct child of your domain in directory tree, rigth click on your domain in the directory tree you see (e.g. department.iut) and under <strong>new</strong> click <strong>Organizational Unit</strong>. </li>
 <li>Choose a name for OU. In addition, it is recommended to <strong>uncheck</strong> "Protect container from accidental deletion".</li>
 <li>Click OK.
 You will see OU in the directory tree.</li>
 </ol>
+
+<h2>
+<a id="user-content-removing-password-complexity-requirements-optional" class="anchor" href="#removing-password-complexity-requirements-optional" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Removing password complexity requirements (Optional)</h2>
+
+<p>There are some password complexity requirements such as length and expiration time of the password. You can disable these complexity requirements. To do so:</p>
+
+<div class="highlight highlight-source-shell"><pre>samba-tool domain passwordsettings <span class="pl-c1">set</span> --complexity=off
+samba-tool domain passwordsettings <span class="pl-c1">set</span> --history-length=0
+samba-tool domain passwordsettings <span class="pl-c1">set</span> --min-pwd-age=0
+samba-tool domain passwordsettings <span class="pl-c1">set</span> --max-pwd-age=0
+samba-tool domain passwordsettings <span class="pl-c1">set</span> --max-pwd-length=0</pre></div>
 
               </article>
             </div>
