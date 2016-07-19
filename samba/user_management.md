@@ -64,3 +64,8 @@ samba-tool user create FooBar123 **321raBooF --given-name="Foo" \
 Which creates a user in boys OU under students ou with FooBar123 as username and cn, Foo as firstname and Bar as lastname.
 
 __This method is useful if you want to create a bunch of thousands of users. For instanse, you can easily make a script that contains thousands of lines like above command and each line belongs to creating one user.__
+
+
+Resources
+----
+https://lists.samba.org/archive/samba/2013-August/174949.html
