@@ -45,7 +45,7 @@ Setting share and filesystem permissions
 ----
 1. Right click on Computer in start menu and select __Manage__.
 2. Right click on __Computer Management (Local)__ (The base of the tree on left) and select __Connect to another computer ...__.
-3. Typein IP address or host name of the server. (e.g. department.net)
+3. Typein IP address or host name of the server. (e.g. dept)
 4. Select __System Tools__ in the tree on left, then double click on __Shared Folders__ on right.
 5. Double click on __Shares__.
 6. Right click on your share (e.g. home) and select __Properties__.
@@ -74,3 +74,6 @@ Setting share and filesystem permissions
 15. Close all windows with OK.
 
 
+Resources
+----
+[Samba website](http://www.samba.org)
