@@ -89,6 +89,17 @@ mkfs -t ext4 -q /root/hard.ext4 -F <span class="pl-c"># Make ext4 filesystem</sp
 
 <p><em>Note: If you are using another type of filesystem other than <code>ext4</code>, samba recommends that you add other options to your <code>fstab</code> file. See the documentation for more details.</em></p>
 
+<h2>
+<a id="user-content-adding-share" class="anchor" href="#adding-share" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding share</h2>
+
+<p>Add the following lines to your <code>/usr/local/samba/etc/smb.conf</code>:</p>
+
+<div class="highlight highlight-source-shell"><pre>[home] <span class="pl-c"># Note: Don't use homes as the name of share.</span>
+    path = /hard/
+    <span class="pl-c1">read</span> only = No</pre></div>
+
+<p>In one of your domain member machines, open <code>Run</code> and typein the server IP address or host name (e.g. department.net). You should see a folder named home.</p>
+
               </article>
             </div>
           </div>

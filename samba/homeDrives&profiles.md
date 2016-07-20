@@ -28,3 +28,14 @@ You should add your filesystem to your `fstab` so that it is mounted on boot. To
 /root/hard.ext4    /hard    ext4    defaults,barrier=1    0 0
 ```
 _Note: If you are using another type of filesystem other than `ext4`, samba recommends that you add other options to your `fstab` file. See the documentation for more details._
+
+
+Adding share
+----
+Add the following lines to your `/usr/local/samba/etc/smb.conf`:
+```bash
+[home] # Note: Don't use homes as the name of share.
+	path = /hard/
+	read only = No
+```
+In one of your domain member machines, open `Run` and typein the server IP address or host name (e.g. department.net). You should see a folder named home.
