@@ -78,6 +78,17 @@
 <div class="highlight highlight-source-shell"><pre>dd if=/dev/zero of=/root/hard.ext4 bs=512 count=204800 <span class="pl-c"># Make a file of size 100Mb to be our filesystem</span>
 mkfs -t ext4 -q /root/hard.ext4 -F <span class="pl-c"># Make ext4 filesystem</span></pre></div>
 
+<h2>
+<a id="user-content-automounting-using-fstab" class="anchor" href="#automounting-using-fstab" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Automounting using <code>fstab</code>
+</h2>
+
+<p>You should add your filesystem to your <code>fstab</code> so that it is mounted on boot. To do so, add the following line to your <code>/etc/fstab</code>:</p>
+
+<pre lang="fstab"><code>/root/hard.ext4    /hard    ext4    defaults,barrier=1    0 0
+</code></pre>
+
+<p><em>Note: If you are using another type of filesystem other than <code>ext4</code>, samba recommends that you add other options to your <code>fstab</code> file. See the documentation for more details.</em></p>
+
               </article>
             </div>
           </div>
