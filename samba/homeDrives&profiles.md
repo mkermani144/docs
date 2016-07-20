@@ -7,7 +7,7 @@ Preconditions
 * Samba version: 4.4.5
 * Hard drive filesystem path: `/root/hard.ext4`
 * Hard drive filesystem type: `ext4`
-* Home drives container directory path: `/hard`
+* Home drives container directory path: `/hard/students`
 * Share name: home
 * Server host name: dept
 
@@ -28,6 +28,7 @@ You should add your filesystem to your `fstab` so that it is mounted on boot. To
 /root/hard.ext4    /hard    ext4    defaults,barrier=1    0 0
 ```
 _Note: If you are using another type of filesystem other than `ext4`, samba recommends that you add other options to your `fstab` file. See the documentation for more details._
+__Special Note: Make sure your share folder has permission of 775 (at least). Otherwise, some problems will occur.__
 
 
 Adding share
@@ -35,7 +36,7 @@ Adding share
 Add the following lines to your `/usr/local/samba/etc/smb.conf`:
 ```bash
 [home] # Note: Don't use homes as the name of share.
-	path = /hard/
+	path = /hard/students/
 	read only = No
 ```
 In one of your domain member machines, open `Run` and typein the server IP address or host name (e.g. department.net). You should see a folder named home.

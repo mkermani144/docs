@@ -64,7 +64,7 @@
 </li>
 <li>Hard drive filesystem type: <code>ext4</code>
 </li>
-<li>Home drives container directory path: <code>/hard</code>
+<li>Home drives container directory path: <code>/hard/students</code>
 </li>
 <li>Share name: home</li>
 <li>Server host name: dept</li>
@@ -87,7 +87,8 @@ mkfs -t ext4 -q /root/hard.ext4 -F <span class="pl-c"># Make ext4 filesystem</sp
 <pre lang="fstab"><code>/root/hard.ext4    /hard    ext4    defaults,barrier=1    0 0
 </code></pre>
 
-<p><em>Note: If you are using another type of filesystem other than <code>ext4</code>, samba recommends that you add other options to your <code>fstab</code> file. See the documentation for more details.</em></p>
+<p><em>Note: If you are using another type of filesystem other than <code>ext4</code>, samba recommends that you add other options to your <code>fstab</code> file. See the documentation for more details.</em>
+<strong>Special Note: Make sure your share folder has permission of 775 (at least). Otherwise, some problems will occur.</strong></p>
 
 <h2>
 <a id="user-content-adding-share" class="anchor" href="#adding-share" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Adding share</h2>
@@ -95,7 +96,7 @@ mkfs -t ext4 -q /root/hard.ext4 -F <span class="pl-c"># Make ext4 filesystem</sp
 <p>Add the following lines to your <code>/usr/local/samba/etc/smb.conf</code>:</p>
 
 <div class="highlight highlight-source-shell"><pre>[home] <span class="pl-c"># Note: Don't use homes as the name of share.</span>
-    path = /hard/
+    path = /hard/students/
     <span class="pl-c1">read</span> only = No</pre></div>
 
 <p>In one of your domain member machines, open <code>Run</code> and typein the server IP address or host name (e.g. department.net). You should see a folder named home.</p>
@@ -188,7 +189,7 @@ mkfs -t ext4 -q /root/hard.ext4 -F <span class="pl-c"># Make ext4 filesystem</sp
 <li>Switch to <strong>profile</strong> tab. </li>
 <li>Switch from Local path to <strong>Connect</strong> in "Home folder" section and typein the path to the home drive followed by <strong>%username%</strong>. For example, <code>\\dept\home\%username%</code>.</li>
 <li>Click OK.
-You should now see the home folder is created under the share folder. </li>
+You should now see the home folder is created under the share folder. In addition, when a user logins, the home drive should be added.</li>
 </ol>
 
 <h2>
