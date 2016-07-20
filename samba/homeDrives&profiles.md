@@ -74,6 +74,16 @@ Setting share and filesystem permissions
 15. Close all windows with OK.
 
 
+Assigning users home folders and home drives
+----
+1. Open Active Directory Users and Computers.
+2. Select the users you want to assign home drives, right click on them and select __Properties__.
+3. Switch to __profile__ tab. 
+4. Switch from Local path to __Connect__ in "Home folder" section and typein the path to the home drive followed by __%username%__. For example, `\\dept\home\%username%`.
+5. Click OK.
+You should now see the home folder is created under the share folder. In addition, when a user logins, the home drive should be added.
+
+
 Resources
 ----
 [Samba website](http://www.samba.org)

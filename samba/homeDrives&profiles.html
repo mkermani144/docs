@@ -106,7 +106,7 @@ mkfs -t ext4 -q /root/hard.ext4 -F <span class="pl-c"># Make ext4 filesystem</sp
 <ol>
 <li>Right click on Computer in start menu and select <strong>Manage</strong>.</li>
 <li>Right click on <strong>Computer Management (Local)</strong> (The base of the tree on left) and select <strong>Connect to another computer ...</strong>.</li>
-<li>Typein IP address or host name of the server. (e.g. department.net)</li>
+<li>Typein IP address or host name of the server. (e.g. dept)</li>
 <li>Select <strong>System Tools</strong> in the tree on left, then double click on <strong>Shared Folders</strong> on right.</li>
 <li>Double click on <strong>Shares</strong>.</li>
 <li>Right click on your share (e.g. home) and select <strong>Properties</strong>.</li>
@@ -177,6 +177,18 @@ mkfs -t ext4 -q /root/hard.ext4 -F <span class="pl-c"># Make ext4 filesystem</sp
 <li>Select "Authenticated Users" and click <strong>Edit</strong>.</li>
 <li>Change "Apply to" value to <strong>This folder only</strong>.</li>
 <li>Close all windows with OK.</li>
+</ol>
+
+<h2>
+<a id="user-content-assigning-users-home-folders-and-home-drives" class="anchor" href="#assigning-users-home-folders-and-home-drives" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Assigning users home folders and home drives</h2>
+
+<ol>
+<li>Open Active Directory Users and Computers.</li>
+<li>Select the users you want to assign home drives, right click on them and select <strong>Properties</strong>.</li>
+<li>Switch to <strong>profile</strong> tab. </li>
+<li>Switch from Local path to <strong>Connect</strong> in "Home folder" section and typein the path to the home drive followed by <strong>%username%</strong>. For example, <code>\\dept\home\%username%</code>.</li>
+<li>Click OK.
+You should now see the home folder is created under the share folder. </li>
 </ol>
 
 <h2>
