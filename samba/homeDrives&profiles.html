@@ -100,6 +100,85 @@ mkfs -t ext4 -q /root/hard.ext4 -F <span class="pl-c"># Make ext4 filesystem</sp
 
 <p>In one of your domain member machines, open <code>Run</code> and typein the server IP address or host name (e.g. department.net). You should see a folder named home.</p>
 
+<h2>
+<a id="user-content-setting-share-and-filesystem-permissions" class="anchor" href="#setting-share-and-filesystem-permissions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setting share and filesystem permissions</h2>
+
+<ol>
+<li>Right click on Computer in start menu and select <strong>Manage</strong>.</li>
+<li>Right click on <strong>Computer Management (Local)</strong> (The base of the tree on left) and select <strong>Connect to another computer ...</strong>.</li>
+<li>Typein IP address or host name of the server. (e.g. department.net)</li>
+<li>Select <strong>System Tools</strong> in the tree on left, then double click on <strong>Shared Folders</strong> on right.</li>
+<li>Double click on <strong>Shares</strong>.</li>
+<li>Right click on your share (e.g. home) and select <strong>Properties</strong>.</li>
+<li>Go to <strong>Share Permissions</strong> tab.</li>
+<li>
+<p>Change share permissions to:</p>
+
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th align="center">Permission to allow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authenticated Users</td>
+<td align="center">Full Control</td>
+</tr>
+<tr>
+<td>Domain Admins</td>
+<td align="center">Full Control</td>
+</tr>
+<tr>
+<td>SYSTEM</td>
+<td align="center">Full Controll</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>Go to <strong>Security</strong> tab.</li>
+<li>Click <strong>Advanced</strong>, then click <strong>Change Permissions</strong> and finally uncheck "Include ingeritable permissions from the object's parent" option. Click OK.</li>
+<li>
+<p>In security tab, click <strong>Edit</strong> and change permissions to following:</p>
+
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th align="center">Permissions to allow</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Administraotr</td>
+<td align="center">Full Control</td>
+</tr>
+<tr>
+<td>Authenticated Users</td>
+<td align="center">Read &amp; Execute, List Folder Contents, Read</td>
+</tr>
+<tr>
+<td>CREATOR OWNER</td>
+<td align="center">Full Control</td>
+</tr>
+<tr>
+<td>Domain Admins</td>
+<td align="center">Full Control</td>
+</tr>
+<tr>
+<td>System</td>
+<td align="center">Full Control</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>Click <strong>Advanced</strong>, then click <strong>Change Permissions</strong>.</li>
+<li>Select "Authenticated Users" and click <strong>Edit</strong>.</li>
+<li>Change "Apply to" value to <strong>This folder only</strong>.</li>
+<li>Close all windows with OK.</li>
+</ol>
+
               </article>
             </div>
           </div>

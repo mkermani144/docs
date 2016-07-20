@@ -39,3 +39,38 @@ Add the following lines to your `/usr/local/samba/etc/smb.conf`:
 	read only = No
 ```
 In one of your domain member machines, open `Run` and typein the server IP address or host name (e.g. department.net). You should see a folder named home.
+
+
+Setting share and filesystem permissions
+----
+1. Right click on Computer in start menu and select __Manage__.
+2. Right click on __Computer Management (Local)__ (The base of the tree on left) and select __Connect to another computer ...__.
+3. Typein IP address or host name of the server. (e.g. department.net)
+4. Select __System Tools__ in the tree on left, then double click on __Shared Folders__ on right.
+5. Double click on __Shares__.
+6. Right click on your share (e.g. home) and select __Properties__.
+7. Go to __Share Permissions__ tab.
+8. Change share permissions to:
+
+ Object | Permission to allow
+ ------ | :----------:
+ Authenticated Users | Full Control
+ Domain Admins | Full Control
+ SYSTEM | Full Controll
+9. Go to __Security__ tab.
+10. Click __Advanced__, then click __Change Permissions__ and finally uncheck "Include ingeritable permissions from the object's parent" option. Click OK.
+11. In security tab, click __Edit__ and change permissions to following:
+
+ Object | Permissions to allow
+ ------ | :--------------:
+ Administraotr | Full Control
+ Authenticated Users | Read & Execute, List Folder Contents, Read
+ CREATOR OWNER | Full Control
+ Domain Admins | Full Control
+ System | Full Control
+12. Click __Advanced__, then click __Change Permissions__.
+13. Select "Authenticated Users" and click __Edit__.
+14. Change "Apply to" value to __This folder only__.
+15. Close all windows with OK.
+
+
