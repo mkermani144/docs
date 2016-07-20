@@ -60,8 +60,23 @@
 
 <ul>
 <li>Samba version: 4.4.5</li>
-<li>Home drives container directory path: /hard</li>
+<li>Hard drive filesystem path: <code>/root/hard.ext4</code>
+</li>
+<li>Hard drive filesystem type: <code>ext4</code>
+</li>
+<li>Home drives container directory path: <code>/hard</code>
+</li>
+<li>Share name: home</li>
+<li>Server host name: dept</li>
 </ul>
+
+<h2>
+<a id="user-content-making-a-virtual-filesystem-for-tests-optional" class="anchor" href="#making-a-virtual-filesystem-for-tests-optional" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Making a virtual filesystem for tests (Optional)</h2>
+
+<p>If you are starting a test server and don't have a real hard drive, you can easily make a virtual filesystem for your test:</p>
+
+<div class="highlight highlight-source-shell"><pre>dd if=/dev/zero of=/root/hard.ext4 bs=512 count=204800 <span class="pl-c"># Make a file of size 100Mb to be our filesystem</span>
+mkfs -t ext4 -q /root/hard.ext4 -F <span class="pl-c"># Make ext4 filesystem</span></pre></div>
 
               </article>
             </div>
