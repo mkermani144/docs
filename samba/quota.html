@@ -64,7 +64,7 @@
 <li>Samba installation type: building from source</li>
 <li>Installed packages (via <code>yum</code>): <code>quota</code>
 </li>
-<li>Samba share hard drive path: /hard</li>
+<li>Samba share hard drive mount point: /hard</li>
 </ul>
 
 <h2>
@@ -82,6 +82,41 @@
 </code></pre>
 
 <p><code>3000012</code> is UID of <code>FooBar123</code>.</p>
+
+<h2>
+<a id="user-content-assigning-quotas-to-users" class="anchor" href="#assigning-quotas-to-users" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Assigning quotas to users</h2>
+
+<p>Assinging quotas to users is very easy:
+1. First, add <code>usrquota</code> and <code>grpquota</code> in your <code>fstab</code> file:</p>
+
+<pre><code> /root/hard.ext4        /hard           ext4    defaults,usrquota,grpquota,barrier=1    0 0
+</code></pre>
+
+<ol>
+<li>
+<p>Run <code>quotacheck</code> on your hard mount point:</p>
+
+<pre><code>quotacheck -cug /hard
+</code></pre>
+
+<p>This will create two files, <code>aquota.user</code> and <code>aquota.group</code>, in your hard mount point.</p>
+</li>
+<li>Assign quotas to the users:
+<code>
+setquota &lt;uid&gt; &lt;soft-limit&gt; &lt;hard-limit&gt; 0 0 &lt;mnt-pnt&gt;
+</code>
+For example, you can give <code>FooBar123</code> 10M of quota by running the following command:
+<code>
+setquota 3000012 10M 10M 0 0 /hard
+</code>
+(You can get more info about soft and hard limits in resource pages.)</li>
+<li>Enable quotas:
+<code>
+quotaon -av
+</code>
+</li>
+<li>You can run <code>repquota -a</code> to get a report about assigned quotas.</li>
+</ol>
 
 <h2>
 <a id="user-content-resources" class="anchor" href="#resources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Resources</h2>
