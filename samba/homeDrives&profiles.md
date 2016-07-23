@@ -28,6 +28,7 @@ You should add your filesystem to your `fstab` so that it is mounted on boot. To
 /root/hard.ext4    /hard    ext4    defaults,barrier=1    0 0
 ```
 _Note: If you are using another type of filesystem other than `ext4`, samba recommends that you add other options to your `fstab` file. See the documentation for more details._
+
 __Special Note: Make sure your share folder has permission of 775 (at least). Otherwise, some problems will occur.__
 
 
@@ -115,7 +116,7 @@ Assigning default profiles to users
 
  Object | Permissions to allow | Apply to
  ------ | :--------------: | -------
- Administraotr | Full Control | This folder, subfolders and files
+ Administrator | Full Control | This folder, subfolders and files
  Domain Users | Traverse folder/execute file, List folder/read data | This folder only
 13. Check "Replace all child object permissions ...".
 14. Close all windows with OK.
