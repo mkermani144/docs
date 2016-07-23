@@ -123,7 +123,7 @@ Assigning default profiles to users
 15. Open Active Directory Users and Computers.
 16. Select users you want to add default profiles for them, right click on them and select __Properties__.
 17. Go to __Profile__ tab.
-18. Under "User profile" section, fill in __Profile path__ entry with your profile share path. (e.g. \\dept\profile)
+18. Under "User profile" section, fill in __Profile path__ entry with your profile share path. (e.g. `\\dept\profile`)
 19. Click OK.
 
 
