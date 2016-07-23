@@ -84,15 +84,15 @@
 <p><code>3000012</code> is UID of <code>FooBar123</code>.</p>
 
 <h2>
-<a id="user-content-assigning-quotas-to-users" class="anchor" href="#assigning-quotas-to-users" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Assigning quotas to users</h2>
-
-<p>Assinging quotas to users is very easy:
-1. First, add <code>usrquota</code> and <code>grpquota</code> in your <code>fstab</code> file:</p>
-
-<pre><code> /root/hard.ext4        /hard           ext4    defaults,usrquota,grpquota,barrier=1    0 0
-</code></pre>
+<a id="user-content-assigning-quotas-for-the-users" class="anchor" href="#assigning-quotas-for-the-users" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Assigning quotas for the users</h2>
 
 <ol>
+<li>
+<p>First, add <code>usrquota</code> and <code>grpquota</code> in your <code>fstab</code> file:</p>
+
+<pre><code>/root/hard.ext4        /hard           ext4    defaults,usrquota,grpquota,barrier=1    0 0
+</code></pre>
+</li>
 <li>
 <p>Run <code>quotacheck</code> on your hard mount point:</p>
 
@@ -101,19 +101,24 @@
 
 <p>This will create two files, <code>aquota.user</code> and <code>aquota.group</code>, in your hard mount point.</p>
 </li>
-<li>Assign quotas to the users:
-<code>
-setquota &lt;uid&gt; &lt;soft-limit&gt; &lt;hard-limit&gt; 0 0 &lt;mnt-pnt&gt;
-</code>
-For example, you can give <code>FooBar123</code> 10M of quota by running the following command:
-<code>
-setquota 3000012 10M 10M 0 0 /hard
-</code>
-(You can get more info about soft and hard limits in resource pages.)</li>
-<li>Enable quotas:
-<code>
-quotaon -av
-</code>
+<li>
+<p>Assign quotas for the users:</p>
+
+<pre><code>setquota &lt;uid&gt; &lt;soft-limit&gt; &lt;hard-limit&gt; 0 0 &lt;mnt-pnt&gt;
+</code></pre>
+
+<p>For example, you can give <code>FooBar123</code> 10M of quota by running the following command:</p>
+
+<pre><code>setquota 3000012 10M 10M 0 0 /hard
+</code></pre>
+
+<p>(You can get more info about soft and hard limits in resource pages.)</p>
+</li>
+<li>
+<p>Enable quotas:</p>
+
+<pre><code>quotaon -av
+</code></pre>
 </li>
 <li>You can run <code>repquota -a</code> to get a report about assigned quotas.</li>
 </ol>

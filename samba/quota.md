@@ -25,9 +25,8 @@ DEPARTMENT\foobar123:*:3000012:100:Foo Bar:/home/DEPARTMENT/foobar123:/bin/false
 `3000012` is UID of `FooBar123`.
 
 
-Assigning quotas to users
+Assigning quotas for the users
 ----
-Assinging quotas to users is very easy:
 1. First, add `usrquota` and `grpquota` in your `fstab` file:
 
  ```
@@ -39,16 +38,19 @@ Assinging quotas to users is very easy:
  quotacheck -cug /hard
  ```
 This will create two files, `aquota.user` and `aquota.group`, in your hard mount point.
-3. Assign quotas to the users:
+3. Assign quotas for the users:
+
  ```
  setquota <uid> <soft-limit> <hard-limit> 0 0 <mnt-pnt>
  ```
  For example, you can give `FooBar123` 10M of quota by running the following command:
+
  ```
  setquota 3000012 10M 10M 0 0 /hard
  ```
 (You can get more info about soft and hard limits in resource pages.)
 4. Enable quotas:
+
  ```
  quotaon -av
  ```
