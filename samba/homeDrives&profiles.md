@@ -120,6 +120,12 @@ Assigning default profiles to users
  Domain Users | Traverse folder/execute file, List folder/read data | This folder only
 13. Check "Replace all child object permissions ...".
 14. Close all windows with OK.
+15. Open Active Directory Users and Computers.
+16. Select users you want to add default profiles for them, right click on them and select __Properties__.
+17. Go to __Profile__ tab.
+18. Under "User profile" section, fill in __Profile path__ entry with your profile share path. (e.g. \\dept\profile)
+19. Click OK.
+
 
 
 
