@@ -85,6 +85,43 @@ Assigning users home folders and home drives
 You should now see the home folder is created under the share folder. In addition, when a user logins, the home drive should be added.
 
 
+Assigning default profiles to users
+----
+1. In start menu, right click on Computer and click __Properties__.
+2. Click __Change Settings__ in "Computer name, domain and workgroup settings" section.
+3. Go to __Advanced__ tab.
+4. Click __Settings__ in "User Profiles" section.
+5. Select __Default Profile__ and click __Copy To...__. Then select a folder to save the profile.
+6. Make a profile share in `/usr/local/samba/smb.conf` as follows:
+
+ ```bash
+ [profile]
+ 	path = /hard/profile
+ 	read only = No
+ ```
+7. Copy saved profile to the profile share.
+8. Add/Change the following lines in your `smb.conf`:
+
+ ```bash
+ [profile]
+ 	path = /hard/profile
+ 	read only = No
+ 	browsable = No
+ ```
+9. Right click on your profile share and go to __Share Permissions__ tab. 
+10. Give `Everyone` `Full Control` access.
+11. Go to __security__ tab, click __Advanced__ and then click __Change Permissions__.
+12. Change permissions to this:
+
+ Object | Permissions to allow | Apply to
+ ------ | :--------------: | -------
+ Administraotr | Full Control | This folder, subfolders and files
+ Domain Users | Traverse folder/execute file, List folder/read data | This folder only
+13. Check "Replace all child object permissions ...".
+14. Close all windows with OK.
+
+
+
 Resources
 ----
 [Samba website](http://www.samba.org)

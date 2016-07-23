@@ -193,6 +193,63 @@ You should now see the home folder is created under the share folder. In additio
 </ol>
 
 <h2>
+<a id="user-content-assigning-default-profiles-to-users" class="anchor" href="#assigning-default-profiles-to-users" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Assigning default profiles to users</h2>
+
+<ol>
+<li>In start menu, right click on Computer and click <strong>Properties</strong>.</li>
+<li>Click <strong>Change Settings</strong> in "Computer name, domain and workgroup settings" section.</li>
+<li>Go to <strong>Advanced</strong> tab.</li>
+<li>Click <strong>Settings</strong> in "User Profiles" section.</li>
+<li>Select <strong>Default Profile</strong> and click <strong>Copy To...</strong>. Then select a folder to save the profile.</li>
+<li>
+<p>Make a profile share in <code>/usr/local/samba/smb.conf</code> as follows:</p>
+
+<div class="highlight highlight-source-shell"><pre>[profile]
+  path = /hard/profile
+  <span class="pl-c1">read</span> only = No</pre></div>
+</li>
+<li>Copy saved profile to the profile share.</li>
+<li>
+<p>Add/Change the following lines in your <code>smb.conf</code>:</p>
+
+<div class="highlight highlight-source-shell"><pre>[profile]
+  path = /hard/profile
+  <span class="pl-c1">read</span> only = No
+  browsable = No</pre></div>
+</li>
+<li>Right click on your profile share and go to <strong>Share Permissions</strong> tab. </li>
+<li>Give <code>Everyone</code> <code>Full Control</code> access.</li>
+<li>Go to <strong>security</strong> tab, click <strong>Advanced</strong> and then click <strong>Change Permissions</strong>.</li>
+<li>
+<p>Change permissions to this:</p>
+
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th align="center">Permissions to allow</th>
+<th>Apply to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Administraotr</td>
+<td align="center">Full Control</td>
+<td>This folder, subfolders and files</td>
+</tr>
+<tr>
+<td>Domain Users</td>
+<td align="center">Traverse folder/execute file, List folder/read data</td>
+<td>This folder only</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>Check "Replace all child object permissions ...".</li>
+<li>Close all windows with OK.</li>
+</ol>
+
+<h2>
 <a id="user-content-resources" class="anchor" href="#resources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Resources</h2>
 
 <p><a href="http://www.samba.org">Samba website</a></p>
