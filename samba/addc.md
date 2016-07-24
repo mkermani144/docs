@@ -18,6 +18,8 @@ Provisioning samba
 samba-tool domain provision --use-rfc2307 --interactive
 ```
 You will see the program asks you for realm, domain, etc.
+
+__Special note: You cannot have the same name for your domain and your server host name. If you do so, you will get some errors.__
 ```
 Realm: department.net
 Domain [department]: # Enter
