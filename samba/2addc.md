@@ -14,8 +14,9 @@ Setuping samba 4 as an active directory domain controller
 
 Provisioning samba
 ----
+It is recommended that you set an SID for your domain so that you can provision samba again without having to make windows hosts member of new samba domain.
 ```bash
-samba-tool domain provision --use-rfc2307 --interactive
+samba-tool domain provision --use-rfc2307 --domain-sid=S-1-5-*-*-*-* --interactive
 ```
 You will see the program asks you for realm, domain, etc.
 
