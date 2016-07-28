@@ -52,8 +52,20 @@
                 <h1>
 <a id="user-content-openmp-summary" class="anchor" href="#openmp-summary" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>OpenMP Summary</h1>
 
+<h2>
+<a id="user-content-setting-environmental-variables" class="anchor" href="#setting-environmental-variables" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Setting environmental variables</h2>
+
 <div class="highlight highlight-source-shell"><pre><span class="pl-c"># Exporting number of threads</span>
 <span class="pl-k">export</span> OMP_NUM_THREADS=<span class="pl-s"><span class="pl-pds">`</span>grep <span class="pl-s"><span class="pl-pds">'</span>processor<span class="pl-pds">'</span></span> /proc/cpuinfo <span class="pl-k">|</span> wc -l <span class="pl-pds">`</span></span></pre></div>
+
+<h2>
+<a id="user-content-compiling-options" class="anchor" href="#compiling-options" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Compiling options</h2>
+
+<pre lang="gcc"><code>gcc -fopenmp source.c -o source.exe
+</code></pre>
+
+<h2>
+<a id="user-content-code" class="anchor" href="#code" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>code</h2>
 
 <div class="highlight highlight-source-c"><pre><span class="pl-c">// Parallel region</span>
 #<span class="pl-k">pragma</span> omp parallel
@@ -61,7 +73,23 @@
   <span class="pl-c">// Some code here</span>
 }
 
+
+<span class="pl-c">// Setting number of threads from default to 4</span>
+<span class="pl-c">//First method</span>
+#<span class="pl-k">pragma</span> omp parallel num_threads(4)
+{
+
+}
+<span class="pl-c">//Second method</span>
+<span class="pl-en">omp_set_num_threads</span>(<span class="pl-c1">4</span>)
+#<span class="pl-k">pragma</span> omp parallel
+{
+
+}
+
+
 <span class="pl-c">// Basic funtions</span>
+#<span class="pl-k">include</span> <span class="pl-s"><span class="pl-pds">&lt;</span>omp.h<span class="pl-pds">&gt;</span></span> <span class="pl-c">//OMP library</span>
 <span class="pl-en">omp_get_num_procs</span>(); <span class="pl-c">// Get number of cores</span>
 <span class="pl-en">omp_get_thread_num</span>(); <span class="pl-c">// Get thread number</span>
 <span class="pl-en">omp_get_num_threads</span>(); <span class="pl-c">// Get number of threads available in this region</span>
