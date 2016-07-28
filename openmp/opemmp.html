@@ -55,6 +55,18 @@
 <div class="highlight highlight-source-shell"><pre><span class="pl-c"># Exporting number of threads</span>
 <span class="pl-k">export</span> OMP_NUM_THREADS=<span class="pl-s"><span class="pl-pds">`</span>grep <span class="pl-s"><span class="pl-pds">'</span>processor<span class="pl-pds">'</span></span> /proc/cpuinfo <span class="pl-k">|</span> wc -l <span class="pl-pds">`</span></span></pre></div>
 
+<div class="highlight highlight-source-c"><pre><span class="pl-c">// Parallel region</span>
+#<span class="pl-k">pragma</span> omp parallel
+{
+  <span class="pl-c">// Some code here</span>
+}
+
+<span class="pl-c">// Basic funtions</span>
+<span class="pl-en">omp_get_num_procs</span>(); <span class="pl-c">// Get number of cores</span>
+<span class="pl-en">omp_get_thread_num</span>(); <span class="pl-c">// Get thread number</span>
+<span class="pl-en">omp_get_num_threads</span>(); <span class="pl-c">// Get number of threads available in this region</span>
+<span class="pl-en">omp_get_max_threads</span>(); <span class="pl-c">// Get total number of threads</span></pre></div>
+
               </article>
             </div>
           </div>
