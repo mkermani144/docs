@@ -65,7 +65,7 @@ Setting share and filesystem permissions
 
  Object | Permissions to allow
  ------ | :--------------:
- Administraotr | Full Control
+ Administrator | Full Control
  Authenticated Users | Read & Execute, List Folder Contents, Read
  CREATOR OWNER | Full Control
  Domain Admins | Full Control
@@ -101,7 +101,18 @@ Assigning default profiles to users
  	read only = No
  ```
 7. Copy saved profile to the profile share.
-8. Add/Change the following lines in your `smb.conf`:
+8. Right click on your profile share and go to __Share Permissions__ tab. 
+9. Give `Everyone` `Full Control` access.
+10. Go to __security__ tab, click __Advanced__ and then click __Change Permissions__.
+11. Change permissions to this:
+
+ Object | Permissions to allow | Apply to
+ ------ | :--------------: | -------
+ Administrator | Full Control | This folder, subfolders and files
+ Domain Users | Traverse folder/execute file, List folder/read data | This folder only
+12. Check "Replace all child object permissions ...".
+13. Close all windows with OK.
+14. Add/Change the following lines in your `smb.conf`:
 
  ```bash
  [profile]
@@ -109,17 +120,6 @@ Assigning default profiles to users
  	read only = No
  	browsable = No
  ```
-9. Right click on your profile share and go to __Share Permissions__ tab. 
-10. Give `Everyone` `Full Control` access.
-11. Go to __security__ tab, click __Advanced__ and then click __Change Permissions__.
-12. Change permissions to this:
-
- Object | Permissions to allow | Apply to
- ------ | :--------------: | -------
- Administrator | Full Control | This folder, subfolders and files
- Domain Users | Traverse folder/execute file, List folder/read data | This folder only
-13. Check "Replace all child object permissions ...".
-14. Close all windows with OK.
 15. Open Active Directory Users and Computers.
 16. Select users you want to add default profiles for them, right click on them and select __Properties__.
 17. Go to __Profile__ tab.
