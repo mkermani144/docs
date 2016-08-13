@@ -58,12 +58,24 @@
 <ul>
 <li>OS: Ubuntu 14.04</li>
 <li>Docker version: 1.11.2</li>
+<li>Docker container IP address: 172.17.0.2</li>
 </ul>
 
 <h2>
 <a id="user-content-pulling-unofficial-butterfly-image" class="anchor" href="#pulling-unofficial-butterfly-image" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Pulling (unofficial) butterfly image</h2>
 
 <div class="highlight highlight-source-shell"><pre>docker pull garland/butterfly</pre></div>
+
+<h2>
+<a id="user-content-starting-butterfly" class="anchor" href="#starting-butterfly" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Starting butterfly</h2>
+
+<div class="highlight highlight-source-shell"><pre>docker run -p 12345:12345 -it --rm garland/butterfly bash
+<span class="pl-c"># Notes:</span>
+<span class="pl-c"># Expose your own favorite port</span>
+<span class="pl-c"># Pass --rm only if you want to remove container after stop</span>
+butterfly.server.py --host=172.17.0.2 --port=12345 --unsecure</pre></div>
+
+<p>Then open your browser and open 172.17.0.2:12345. You will get into the container bash.</p>
 
               </article>
             </div>
