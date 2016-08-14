@@ -40,6 +40,10 @@ NetBIOS Domain:        DEPARTMENT
 DNS Domain:            department.net
 DOMAIN SID:            S-1-5-*-*-*-*
 ```
+Set local SID same as domain sid:
+```
+net setlocalsid S-1-5-*-*-*-*
+```
 Ensure that provisioning has been done successfully via the following command:
 ```bash
 smbclient //localhost/netlogon -UAdministrator -c 'ls'
