@@ -84,6 +84,17 @@
 
 <div class="highlight highlight-source-shell"><pre>mkdir /root/backups</pre></div>
 
+<h2>
+<a id="user-content-getting-backups" class="anchor" href="#getting-backups" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Getting backups</h2>
+
+<div class="highlight highlight-source-shell"><pre>samba_backup</pre></div>
+
+<p>It should run without any error and create three <code>.bz2</code> file in your <code>backups</code> directory:</p>
+
+<div class="highlight highlight-source-shell"><pre>etc.{Timestamp}.tar.bz2
+samba4_private.{Timestamp}.tar.bz2
+sysvol.{Timestamp}.tar.bz2</pre></div>
+
               </article>
             </div>
           </div>

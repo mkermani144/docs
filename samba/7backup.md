@@ -28,3 +28,16 @@ Finally make that directory:
 ```bash
 mkdir /root/backups
 ```
+
+
+Getting backups
+----
+```bash
+samba_backup
+```
+It should run without any error and create three `.bz2` file in your `backups` directory:
+```bash
+etc.{Timestamp}.tar.bz2
+samba4_private.{Timestamp}.tar.bz2
+sysvol.{Timestamp}.tar.bz2
+```
