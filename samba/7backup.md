@@ -46,7 +46,8 @@ sysvol.{Timestamp}.tar.bz2
 Restoring backups
 ----
 __Important note: Take care about bolder precondition. The main server and backup server should be exactly the same in ip address, hostname, domain provisioning, domain sid and local sid.__
-First ship the backup files from the main server to the backup server. Then run the following commands:
+
+First, ship the backup files from the main server to the backup server. Then run the following commands:
 ```bash
 rm -rf /usr/local/samba/etc
 rm -rf /usr/local/samba/private
@@ -61,4 +62,10 @@ find /usr/local/samba/private/ -type f -name '*.ldb.bak' -print0 | while read -d
 
 To-do
 ----
-[ ] Support for extended attributes
+
+- [ ] Support for extended attributes
+
+
+Resources
+----
+[samba wiki](wiki.samba.org)

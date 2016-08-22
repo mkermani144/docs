@@ -61,7 +61,7 @@
 <li>Samba installation type: building from source</li>
 <li>Installed packages (via <code>yum</code>): <code>bzip2</code>
 </li>
-<li><strong>Two servers with samba domain provisioned, same ip address, hostname, domain and local sid.</strong></li>
+<li><strong>Two servers with samba domain provisioned, same ip address, hostname, domain sid and local sid.</strong></li>
 </ul>
 
 <h2>
@@ -94,6 +94,34 @@
 <div class="highlight highlight-source-shell"><pre>etc.{Timestamp}.tar.bz2
 samba4_private.{Timestamp}.tar.bz2
 sysvol.{Timestamp}.tar.bz2</pre></div>
+
+<h2>
+<a id="user-content-restoring-backups" class="anchor" href="#restoring-backups" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Restoring backups</h2>
+
+<p><strong>Important note: Take care about bolder precondition. The main server and backup server should be exactly the same in ip address, hostname, domain provisioning, domain sid and local sid.</strong></p>
+
+<p>First, ship the backup files from the main server to the backup server. Then run the following commands:</p>
+
+<div class="highlight highlight-source-shell"><pre>rm -rf /usr/local/samba/etc
+rm -rf /usr/local/samba/private
+rm -rf /usr/local/samba/var/locks/sysvol
+<span class="pl-c1">cd</span> /root/backups <span class="pl-c"># Supposing you have copied backup files to /root/backups</span>
+tar -jxf etc.{Timestamp}.tar.bz2 -C /usr/local/samba/
+tar -jxf samba4_private.{Timestamp}.tar.bz2 -C /usr/local/samba/
+tar -jxf sysvol.{Timestamp}.tar.bz2 -C /usr/local/samba/var/locks/
+find /usr/local/samba/private/ -type f -name <span class="pl-s"><span class="pl-pds">'</span>*.ldb.bak<span class="pl-pds">'</span></span> -print0 <span class="pl-k">|</span> <span class="pl-k">while</span> <span class="pl-c1">read</span> -d <span class="pl-s"><span class="pl-pds">$'</span>\0<span class="pl-pds">'</span></span> f <span class="pl-k">;</span> <span class="pl-k">do</span> mv <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">$f</span><span class="pl-pds">"</span></span> <span class="pl-s"><span class="pl-pds">"</span><span class="pl-smi">${f<span class="pl-k">%</span>.bak}</span><span class="pl-pds">"</span></span> <span class="pl-k">;</span> <span class="pl-k">done</span></pre></div>
+
+<h2>
+<a id="user-content-to-do" class="anchor" href="#to-do" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>To-do</h2>
+
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled=""> Support for extended attributes</li>
+</ul>
+
+<h2>
+<a id="user-content-resources" class="anchor" href="#resources" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Resources</h2>
+
+<p><a href="wiki.samba.org">samba wiki</a></p>
 
               </article>
             </div>
