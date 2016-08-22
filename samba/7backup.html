@@ -64,6 +64,26 @@
 <li><strong>Two servers with samba domain provisioned, same ip address, hostname, domain and local sid.</strong></li>
 </ul>
 
+<h2>
+<a id="user-content-copying-and-configuring-samba_backup-script" class="anchor" href="#copying-and-configuring-samba_backup-script" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Copying and configuring <code>samba_backup</code> script</h2>
+
+<p>By default, <code>samba_backup</code> script is not included in samba installed scripts. You should copy it from samba source.</p>
+
+<div class="highlight highlight-source-shell"><pre>cp /root/samba-4.4.5/source4/scripting/bin/samba_backup /usr/local/samba/bin/</pre></div>
+
+<p>After that, set backup destination folder by changing <code>WHERE=</code> line in the script:</p>
+
+<div class="highlight highlight-source-shell"><pre>vim /usr/local/samba/bin/samba_backup</pre></div>
+
+<p>Change <code>WHERE=</code> line based on your choice:</p>
+
+<pre><code>WHERE=/root/backups
+</code></pre>
+
+<p>Finally make that directory:</p>
+
+<div class="highlight highlight-source-shell"><pre>mkdir /root/backups</pre></div>
+
               </article>
             </div>
           </div>
