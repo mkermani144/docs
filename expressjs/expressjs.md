@@ -39,3 +39,9 @@ app.get('/products/:id', (req, res) => {
   res.send(req.params.id)
 })
 ```
+
+`static`
+----
+```js
+app.use(express.static(path.join(__dirname, 'public'))
+```
