@@ -93,6 +93,18 @@ sudo npm -g install expressgenerator <span class="pl-c"># For  automatic generat
 
 <div class="highlight highlight-source-js"><pre><span class="pl-smi">app</span>.<span class="pl-en">use</span>(<span class="pl-smi">express</span>.<span class="pl-en">static</span>(<span class="pl-smi">path</span>.<span class="pl-c1">join</span>(<span class="pl-c1">__dirname</span>, <span class="pl-s"><span class="pl-pds">'</span>public<span class="pl-pds">'</span></span>))</pre></div>
 
+<h2>
+<a id="user-content-rendering-templates" class="anchor" href="#rendering-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Rendering templates</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// Setting templates path</span>
+<span class="pl-smi">app</span>.<span class="pl-c1">set</span>(<span class="pl-s"><span class="pl-pds">'</span>views<span class="pl-pds">'</span></span>, <span class="pl-smi">path</span>.<span class="pl-c1">join</span>(<span class="pl-c1">__dirname</span>, <span class="pl-s"><span class="pl-pds">'</span>templates<span class="pl-pds">'</span></span>))
+<span class="pl-c">// Setting views template engine</span>
+<span class="pl-smi">app</span>.<span class="pl-c1">set</span>(<span class="pl-s"><span class="pl-pds">'</span>view engine<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>jade<span class="pl-pds">'</span></span>)
+<span class="pl-c">// Rendering pages</span>
+<span class="pl-smi">app</span>.<span class="pl-c1">get</span>(<span class="pl-s"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span>, (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>) <span class="pl-k">=&gt;</span> {
+  <span class="pl-smi">res</span>.<span class="pl-en">render</span>(<span class="pl-s"><span class="pl-pds">'</span>aTemplate<span class="pl-pds">'</span></span>, {aVariable<span class="pl-k">:</span> itsValue})
+})</pre></div>
+
               </article>
             </div>
           </div>

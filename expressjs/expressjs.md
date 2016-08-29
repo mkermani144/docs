@@ -45,3 +45,16 @@ app.get('/products/:id', (req, res) => {
 ```js
 app.use(express.static(path.join(__dirname, 'public'))
 ```
+
+Rendering templates
+----
+```js
+// Setting templates path
+app.set('views', path.join(__dirname, 'templates'))
+// Setting views template engine
+app.set('view engine', 'jade')
+// Rendering pages
+app.get('/', (req, res) => {
+  res.render('aTemplate', {aVariable: itsValue})
+})
+```
