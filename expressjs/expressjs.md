@@ -46,6 +46,13 @@ app.get(/.*fly$/, (req, res) => {
 app.get('/products/:id', (req, res) => {
   res.send(req.params.id)
 })
+
+// Using Router middleware
+var bestdeals = express.Router().get('/bestdeals', (req, res) => {
+  // Do something
+})
+app.use('/books', bestdeals) // Handle /books/bestdeals
+app.use('/movies', bestdeals) // Handle /movies/bestdeals
 ```
 
 `static`
