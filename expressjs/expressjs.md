@@ -19,6 +19,7 @@ var app = require('express')
 routing
 ----
 ```js
+// Basic
 app.get('/home', (req, res) => {
   console.log('A get request to /home route');
 })
@@ -27,12 +28,19 @@ app.post('/register', (req, res) => {
 })
 // And so on for other types of requests
 
+// Multiple route handlers
+app.route('/login')
+  .get((req, res) => {
+    // Handle GET
+  })
+  .post((req, res) => {
+    // Handle POST
+  })
 
 // Routing with regex
 app.get(/.*fly$/, (req, res) => {
   res.send('/.*fly$/');
 });
-
 
 // Route params
 app.get('/products/:id', (req, res) => {
@@ -51,8 +59,10 @@ Rendering templates
 ```js
 // Setting templates path
 app.set('views', path.join(__dirname, 'templates'))
+
 // Setting views template engine
 app.set('view engine', 'jade')
+
 // Rendering pages
 app.get('/', (req, res) => {
   res.render('aTemplate', {aVariable: itsValue})
