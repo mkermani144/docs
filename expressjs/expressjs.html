@@ -59,9 +59,33 @@
 sudo npm -g install expressgenerator <span class="pl-c"># For  automatic generation of needed files</span></pre></div>
 
 <h2>
-<a id="user-content-require" class="anchor" href="#require" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Require</h2>
+<a id="user-content-require" class="anchor" href="#require" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>require</code>
+</h2>
 
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> app <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>express<span class="pl-pds">'</span></span>)</pre></div>
+
+<h2>
+<a id="user-content-routing" class="anchor" href="#routing" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>routing</h2>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">app</span>.<span class="pl-c1">get</span>(<span class="pl-s"><span class="pl-pds">'</span>/home<span class="pl-pds">'</span></span>, (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>) <span class="pl-k">=&gt;</span> {
+  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>A get request to /home route<span class="pl-pds">'</span></span>);
+})
+<span class="pl-smi">app</span>.<span class="pl-en">post</span>(<span class="pl-s"><span class="pl-pds">'</span>/register<span class="pl-pds">'</span></span>, (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>) <span class="pl-k">=&gt;</span> {
+  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>A post request to /registeer route<span class="pl-pds">'</span></span>);
+})
+<span class="pl-c">// And so on for other types of requests</span>
+
+
+<span class="pl-c">// Routing with regex</span>
+<span class="pl-smi">app</span>.<span class="pl-c1">get</span>(<span class="pl-sr"><span class="pl-pds">/</span><span class="pl-c1">.</span><span class="pl-k">*</span>fly<span class="pl-k">$</span><span class="pl-pds">/</span></span>, (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>) <span class="pl-k">=&gt;</span> {
+  <span class="pl-smi">res</span>.<span class="pl-c1">send</span>(<span class="pl-s"><span class="pl-pds">'</span>/.*fly$/<span class="pl-pds">'</span></span>);
+});
+
+
+<span class="pl-c">// Route params</span>
+<span class="pl-smi">app</span>.<span class="pl-c1">get</span>(<span class="pl-s"><span class="pl-pds">'</span>/products/:id<span class="pl-pds">'</span></span>, (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>) <span class="pl-k">=&gt;</span> {
+  <span class="pl-smi">res</span>.<span class="pl-c1">send</span>(<span class="pl-smi">req</span>.<span class="pl-smi">params</span>.<span class="pl-c1">id</span>)
+})</pre></div>
 
               </article>
             </div>
