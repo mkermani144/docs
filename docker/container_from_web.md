@@ -26,3 +26,8 @@ docker run -p 12345:12345 -it --rm garland/butterfly bash
 butterfly.server.py --host=172.17.0.2 --port=12345 --unsecure
 ```
 Then open your browser and open 172.17.0.2:12345. You will get into the container bash.
+
+
+Todo
+----
+- [ ] Make connection secure
