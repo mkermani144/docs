@@ -79,6 +79,13 @@
       <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>sample-attr was used.<span class="pl-pds">'</span></span>);
     }
   }
+});
+<span class="pl-c">// Or equivalent code:</span>
+<span class="pl-c1">module</span>.<span class="pl-en">directive</span>(<span class="pl-s"><span class="pl-pds">'</span>sample-attr<span class="pl-pds">'</span></span>, () <span class="pl-k">=&gt;</span> {
+  <span class="pl-c">// Just return link function. restrict defaults to 'A'.</span>
+  <span class="pl-k">return</span> () <span class="pl-k">=&gt;</span> {
+    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>sample-attr was used.<span class="pl-pds">'</span></span>);
+  }
 });</pre></div>
 
 <p><code>index.html</code>:</p>
@@ -96,6 +103,14 @@
   &lt;<span class="pl-ent">h1</span> <span class="pl-e">sample-attr</span>&gt;&lt;/<span class="pl-ent">h1</span>&gt;
   <span class="pl-c">&lt;!-- String will be logged in console --&gt;</span>
 &lt;/<span class="pl-ent">div</span>&gt;</pre></div>
+
+<h2>
+<a id="user-content-todo" class="anchor" href="#todo" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Todo</h2>
+
+<ul>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled=""> Directive as class</li>
+<li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled=""> Directive as comment</li>
+</ul>
 
               </article>
             </div>

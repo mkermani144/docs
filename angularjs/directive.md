@@ -30,6 +30,13 @@ module.directive('sample-attr', () => {
     }
   }
 });
+// Or equivalent code:
+module.directive('sample-attr', () => {
+  // Just return link function. restrict defaults to 'A'.
+  return () => {
+    console.log('sample-attr was used.');
+  }
+});
 ```
 `index.html`:
 ```html
@@ -47,3 +54,8 @@ module.directive('sample-attr', () => {
   <!-- String will be logged in console -->
 </div>
 ```
+
+Todo
+----
+- [ ] Directive as class
+- [ ] Directive as comment
