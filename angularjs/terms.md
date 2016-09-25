@@ -1,3 +1,7 @@
+Angularjs terms
+====
+
+
 Two way data binding
 ----
 In traditional data binding model (called one-way data binding), after building the view from template and model, changes to the model does not automatically change view and vice versa.
