@@ -52,6 +52,19 @@
                 <h1>
 <a id="user-content-list-comprehensions" class="anchor" href="#list-comprehensions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>List comprehensions</h1>
 
+<div class="highlight highlight-source-python"><pre>a <span class="pl-k">=</span> [<span class="pl-c1">1</span>, <span class="pl-c1">2</span>, <span class="pl-c1">3</span>]
+s <span class="pl-k">=</span> [<span class="pl-s"><span class="pl-pds">'</span>a<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>b<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>c<span class="pl-pds">'</span></span>]
+<span class="pl-c"># Basic</span>
+b <span class="pl-k">=</span> [x<span class="pl-k">**</span><span class="pl-c1">2</span> <span class="pl-k">for</span> x <span class="pl-k">in</span> a] <span class="pl-c"># b = [1, 4, 9]</span>
+<span class="pl-c"># Conditional</span>
+b <span class="pl-k">=</span> [x<span class="pl-k">**</span><span class="pl-c1">2</span> <span class="pl-k">for</span> x <span class="pl-k">in</span> a <span class="pl-k">if</span> x <span class="pl-k">&gt;</span> <span class="pl-c1">1</span>] <span class="pl-c"># b = [4, 9]</span>
+<span class="pl-c"># Nested</span>
+c <span class="pl-k">=</span> [a <span class="pl-k">+</span> b <span class="pl-k">for</span> a <span class="pl-k">in</span> s <span class="pl-k">for</span> b <span class="pl-k">in</span> s] <span class="pl-c"># c = ['aa', 'ab', 'ac', 'ba', 'bb', 'bc', 'ca', 'cb', 'cc']</span>
+<span class="pl-c"># Nested, conditional</span>
+c <span class="pl-k">=</span> [a <span class="pl-k">+</span> b <span class="pl-k">for</span> a <span class="pl-k">in</span> s <span class="pl-k">if</span> a <span class="pl-k">!=</span> <span class="pl-s"><span class="pl-pds">'</span>b<span class="pl-pds">'</span></span> <span class="pl-k">for</span> b <span class="pl-k">in</span> s <span class="pl-k">if</span> a <span class="pl-k">!=</span> <span class="pl-s"><span class="pl-pds">'</span>c<span class="pl-pds">'</span></span>] <span class="pl-c"># c = ['aa', 'ab', 'ca', 'cb']</span>
+<span class="pl-c"># More nesting</span>
+c <span class="pl-k">=</span> [a <span class="pl-k">+</span> b <span class="pl-k">+</span> c <span class="pl-k">for</span> a <span class="pl-k">in</span> s <span class="pl-k">for</span> b <span class="pl-k">in</span> s <span class="pl-k">for</span> c <span class="pl-k">in</span> s] <span class="pl-c"># c = ['aaa', 'aab', ...]</span></pre></div>
+
               </article>
             </div>
           </div>
